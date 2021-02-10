@@ -13,9 +13,9 @@ class TOIEditor extends React.Component {
 
   constructor(props) {
     super(props);
-    this.height = "400px";
+    this.height = "700px";
     this.initialEditType = "markdown";
-    this.previewStyle = "vertical";
+    this.previewStyle = "tab";
     this.state = { isOpen : false };
     this.handleToggle = this.handleToggle.bind(this);
   }
