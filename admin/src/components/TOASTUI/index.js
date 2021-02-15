@@ -8,22 +8,25 @@ import { Button } from '@buffetjs/core';
 
 import MediaLib from '../MediaLib';
 
+import './toastui-editor.css';
+
 class TOIEditor extends React.Component {
   editorRef = React.createRef();
 
   constructor(props) {
     super(props);
-    this.height = "700px";
+    this.height = "300px";
     this.initialEditType = "markdown";
     this.previewStyle = "tab";
-    this.state = { isOpen : false };
+    this.state = { isOpen : false, isFullscreen: false };
     this.handleToggle = this.handleToggle.bind(this);
+    this.toggleFullscreen = this.toggleFullscreen.bind(this);
   }
 
   componentWillReceiveProps = (nextProps) => {
     // It seems that Strapi sets the value property after the editor was initialized,
-    // this rendering initialValue useless, and proper value never making it into 
-    // the component. Instead, we are setting the value manually, but only on the first 
+    // this rendering initialValue useless, and proper value never making it into
+    // the component. Instead, we are setting the value manually, but only on the first
     // update.
     if (nextProps.value !== this.props.value && this.props.value == null) {
       const editor = this.editorRef.current.getInstance();
@@ -49,6 +52,21 @@ class TOIEditor extends React.Component {
         text: '@',
       }
     });
+
+    editor.eventManager.addEventType('toggleFullscreen');
+    editor.eventManager.listen('toggleFullscreen', () => {
+      this.toggleFullscreen();
+    } );
+
+    toolbar.insertItem(0, {
+      type: 'button',
+      options: {
+        className: 'first tui-image tui-fullscreen',
+        event: 'toggleFullscreen',
+        tooltip: 'Toggle Fullscreen',
+        text: '',
+      }
+    });
   }
 
   componentDidUpdate() {
@@ -72,6 +90,17 @@ class TOIEditor extends React.Component {
   };
 
   handleToggle = () => this.setState({ isOpen : !this.state.isOpen });
+
+  toggleFullscreen = () => {
+    this.setState({ isFullscreen: !this.state.isFullscreen });
+
+    let editorRoot = this.editorRef.current.getRootElement();
+    if (this.state.isFullscreen) {
+        editorRoot.classList.add('tui-fullscreen-editor');
+    } else {
+        editorRoot.classList.remove('tui-fullscreen-editor');
+    }
+  };
 
   render() {
     return (

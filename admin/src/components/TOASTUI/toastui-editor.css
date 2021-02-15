@@ -1,0 +1,30 @@
+.tui-fullscren {
+    background-position: 4px 4px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflAg8TLwCkgkbjAAAAWElEQVQY05XQqxWAQBBD0cunhO0Fg0GvoRxKoDAMvbAHhx0Mij0InktEMhOKEEIG+VGlEVY7NgeSEYOFMHszi9YnWaq89DT+opOdripq+n9Vj4HqQb4muQFoQiDNRfOD4QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMi0xNVQxOTo0Njo1NyswMDowMLjlyicAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDItMTVUMTk6NDY6NTcrMDA6MDDJuHKbAAAAAElFTkSuQmCC");
+}
+
+.tui-fullscreen-screen > div {
+    position: fixed;
+
+    z-index: 100000;
+
+    left: 10px !important;
+    top: 10px !important;
+    width: calc(100vw - 20px) !important;
+    height: calc(100vh - 20px) !important;
+}
+
+.tui-fullscreen-screen > div:before {
+    content: '';
+
+    position: absolute;
+
+    left: -10px;
+    top: -10px;
+    width: 100vw;
+    height: 1000vh;
+
+    background: rgba(0, 0, 0, 0.7);
+}
