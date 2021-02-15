@@ -28,3 +28,7 @@ button.tui-fullscreen-button.tui-toolbar-icons {
 
     background: rgba(0, 0, 0, 0.7);
 }
+
+.tui-fullscreen-editor .tui-editor-defaultUI {
+    background: #fff;
+}
