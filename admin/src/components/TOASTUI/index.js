@@ -8,7 +8,7 @@ import { Button } from '@buffetjs/core';
 
 import MediaLib from '../MediaLib';
 
-import './toastui-editor.css';
+import './plugin-editor.css';
 
 class TOIEditor extends React.Component {
   editorRef = React.createRef();
@@ -49,7 +49,7 @@ class TOIEditor extends React.Component {
         className: 'first tui-image',
         event: 'insertMediaButton',
         tooltip: 'Insert Media',
-        text: '@',
+        text: '',
       }
     });
 
@@ -61,7 +61,7 @@ class TOIEditor extends React.Component {
     toolbar.insertItem(0, {
       type: 'button',
       options: {
-        className: 'first tui-image tui-fullscreen',
+        className: 'first tui-image tui-fullscreen-button',
         event: 'toggleFullscreen',
         tooltip: 'Toggle Fullscreen',
         text: '',
